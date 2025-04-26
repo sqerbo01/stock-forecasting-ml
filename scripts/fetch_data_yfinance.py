@@ -18,7 +18,9 @@ def fetch_stock_data(symbol_file, output_dir, start_date="2000-01-01", end_date=
     for symbol in symbols:
         try:
             print(f"Fetching {symbol} from Yahoo Finance...")
-            df = yf.download(symbol, start=start_date, end=end_date)
+            #df = yf.download(symbol, start=start_date, end=end_date)
+            df = yf.download(symbol, start=start_date, end=end_date, progress=False, threads=False)
+
 
             if df.empty:
                 print(f"Warning: No data for {symbol}")
